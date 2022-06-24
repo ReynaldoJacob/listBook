@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('catalogs.form');
 });
+Route::resource('books', BookController::class);
+Route::get('getViewBook', [BookController::class, 'getViewBook'])->name('getViewBook');
+Route::get('getInfoBook', [BookController::class, 'getInfoBook'])->name('getInfoBook');
+Route::post('saveEditBook', [BookController::class, 'saveEditBook'])->name('saveEditBook');
+Route::get('getBooks', [BookController::class, 'getBooks'])->name('getBooks');
+Route::post('deleteBook', [BookController::class, 'deleteBook'])->name('deleteBook');
